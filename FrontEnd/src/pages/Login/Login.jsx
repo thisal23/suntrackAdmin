@@ -35,7 +35,9 @@ const Login = () => {
     <div className={styles.loginContainer}>
       <div className={styles.loginCard}>
         <div className={styles.logoContainer}>
-          <img src="/logo.png" alt="SunTrack Admin" />
+          <h2>
+            SunTrack
+          </h2>
         </div>
         
         <h2>Welcome Back</h2>
