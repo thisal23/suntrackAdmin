@@ -50,16 +50,17 @@ function NavBar() {
                 name="Dashboard"
               />
               <MenuLink className="menuLink" url="/info" name="Info" />
-              <MenuLink className="menuLink" url="/manage" name="Manage" />
+              <MenuLink className="menuLink" url="/manage-fleet-managers" name="Manage Fleet Managers" />
             </div>
 
             <div className="logOut">
               <button
-                type="submit"
+                type="button"
                 className="logout-btn"
                 onClick={handleLogOut}
+                title="Logout"
               >
-                <img className="logout" src="logout-svgrepo-com.svg" alt="" />
+                Logout
               </button>
             </div>
           </div>

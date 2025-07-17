@@ -2,10 +2,21 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 8000;
-const connectDB = require('../config/db'); // Assuming you have a database connection file
+const { connectDB } = require('../src/config/database');
+const initializeDatabase = require('../src/config/init-db');
 const cors = require("cors");
-connectDB;
 
+// Connect to database and initialize tables
+(async () => {
+  try {
+    await connectDB();
+    await initializeDatabase();
+    console.log('Database initialized successfully');
+  } catch (error) {
+    console.error('Database initialization failed:', error);
+    process.exit(1);
+  }
+})();
 
 // Init Middleware
 app.use(express.json({ extended: false }));
@@ -16,21 +27,10 @@ app.use(cors({
   allowedHeaders: "Content-Type,Authorization"
 }));
 
-// // Define Routes
-// app.use('/api/auth', require('../routes/authRoutes'));
-// app.use('/api', liveTrackingRoutes);
-// app.use('/api', geoRoutes);
-// app.use('/api',maintenanceRoutes)
-// app.use('/api', userRoutes)
-// app.use('/api', vehicleRoutes)
-// app.use('/api', tripRoutes) 
-// app.use('/api',geoFenceEventRoutes);
-// app.use('/api',mapRouteHistory);
-// app.use('/api',geoFenceReportRoutes);
-// app.use('/api',dailySummaryRoutes);
-// app.use('/api',dailydetailRoutes);
-// app.use('/api', distanceRoutes);
-// app.use('/api', idleReportRoutes);
+// Define Routes
+app.use('/api/auth', require('../src/routes/auth.routes'));
+app.use('/api/roles', require('../src/routes/role.routes'));
+app.use('/api/fleet-managers', require('../src/routes/fleet-manager.routes'));
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
