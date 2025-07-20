@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import apiService from '../../config/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 import styles from './AdminRegister.module.scss';
 
@@ -26,7 +26,7 @@ const AdminRegister = () => {
     setError('');
     setSuccess('');
     try {
-      await axios.post('/api/auth/register-admin', { ...form, roleId: 1 });
+      await apiService.post('/auth/register-admin', { ...form, roleId: 1 });
       setSuccess('Admin registered successfully! Redirecting to login...');
       setTimeout(() => navigate('/'), 1500);
     } catch (err) {

@@ -21,9 +21,17 @@ const cors = require("cors");
 // Init Middleware
 app.use(express.json({ extended: false }));
 app.use(cors({
-  origin: "http://localhost:5173", // Allow frontend origin
-  methods: "GET,POST,PUT,DELETE",  // Allowed HTTP methods
-  credentials: true,               // Allow cookies/session handling
+  origin: function (origin, callback) {
+    const allowedOrigins = ["http://localhost:5173", "http://localhost:5174"];
+    if (!origin) return callback(null, true); // allow requests with no origin
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true,
   allowedHeaders: "Content-Type,Authorization"
 }));
 
