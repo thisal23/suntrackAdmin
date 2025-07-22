@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 8000;
 const connectDB = require('../config/db'); // Assuming you have a database connection file
 const cors = require("cors");
 connectDB;
+const userRoutes = require('../routes/userRoutes');
 
 
 // Init Middleware
@@ -21,7 +22,7 @@ app.use(cors({
 // app.use('/api', liveTrackingRoutes);
 // app.use('/api', geoRoutes);
 // app.use('/api',maintenanceRoutes)
-// app.use('/api', userRoutes)
+app.use('/api', userRoutes);
 // app.use('/api', vehicleRoutes)
 // app.use('/api', tripRoutes) 
 // app.use('/api',geoFenceEventRoutes);
