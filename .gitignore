@@ -1,0 +1,6 @@
+node_modules/
+BackEnd/node_modules/
+FrontEnd/node_modules/ 
+config.bat
+temp_auto_push.bat
+temp_interactive_push.bat

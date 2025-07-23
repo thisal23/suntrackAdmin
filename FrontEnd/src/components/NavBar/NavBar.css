@@ -60,7 +60,25 @@
 }
 
 .logout-btn {
-    cursor: pointer;
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1.3rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(211,47,47,0.08);
+  margin-left: 1.2rem;
+}
+.logout-btn:hover {
+  background: #b71c1c;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(211,47,47,0.15);
 }
 
 .menuLink {
