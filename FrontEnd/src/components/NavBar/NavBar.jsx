@@ -2,6 +2,7 @@ import React, { useState, useRef} from "react";
 import MenuLink from "../MenuLink/MenuLink";
 import "./NavBar.css";
 import { useNavigate, NavLink } from "react-router-dom";
+import { FiLogOut } from 'react-icons/fi';
 
 function NavBar() {
   const [dropMenuOpen, setDropMenuOpen] = useState(false);
@@ -33,55 +34,16 @@ function NavBar() {
         {/* Menu Links (aligned to right) */}
         <div className={`ml-auto flex items-center gap-6 ${menuBtn ? "block" : "hidden"} md:flex`}>
           <MenuLink url="/dashboard" name="Dashboard" />
-
-         {/* Manage dropdown */}
-         <div
-  className="relative"
-  ref={dropdownRef}
-  onMouseLeave={() => setDropMenuOpen(false)}
->
-<button
-  className="cursor-pointer focus:outline-none focus:ring-0 outline-none"
-  onClick={() => setDropMenuOpen((prev) => !prev)}
->
-  Manage
-</button>
-
-
-  {dropMenuOpen && (
-    <div
-      className="absolute right-0 mt-1 bg-white rounded-md shadow-lg z-50 w-75"     onMouseEnter={() => setDropMenuOpen(true)} // Keep open when hovering inside
-    >
-      <NavLink
-        to="/add-fleet-manager"
-        className="block px-4 py-2 text-gray-700 hover:bg-gray-200 hover:text-black" 
-        style={{ fontSize: '18px' }}
-        onClick={() => setDropMenuOpen(false)} // Optional: close on item click
-      >
-        ➕ Add Fleet Manager
-      </NavLink>
-      <NavLink
-        to="/view-fleet-managers"
-        className="block px-4 py-2 text-gray-700 hover:bg-gray-200 hover:text-black"
-        style={{ fontSize: '18px' }}
-        onClick={() => setDropMenuOpen(false)} // Optional
-      >
-        👥 View All Fleet Managers
-      </NavLink>
-    </div>
-  )}
-</div>
-
-
+          <MenuLink url="/fleet-managers" name="Manage" />
 
 
           {/* Logout */}
           <button
             onClick={handleLogOut}
-            className="flex items-center gap-1 text-sm bg-transparent border e transition px-3 py-1 rounded-md"
+            className="logout-btn"
             title="Logout"
           >
-            Logout
+            <FiLogOut style={{ marginRight: 6, fontSize: '1.1em' }} /> Logout
           </button>
         </div>
 

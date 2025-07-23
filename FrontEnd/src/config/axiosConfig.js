@@ -26,9 +26,8 @@ api.interceptors.request.use(
 
 const apiService = {
   get: (url, params = {}) => api.get(url, { params }),
-  post: (url, data = {}) => api.post(url, data,{ headers: { "Content-Type": "application/json" } }),
-  put: (url, data = {}) =>
-    api.put(url, data, { headers: { "Content-Type": "multipart/form-data" } }),
+  post: (url, data = {}) => api.post(url, data, { headers: { "Content-Type": "application/json" } }),
+  put: (url, data = {}) => api.put(url, data, { headers: { "Content-Type": "application/json" } }),
   delete: (url) => api.delete(url),
 };
 
