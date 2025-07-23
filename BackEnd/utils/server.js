@@ -7,9 +7,9 @@ const cors = require("cors");
 connectDB;
 const userRoutes = require('../routes/userRoutes');
 
-
 // Init Middleware
-app.use(express.json({ extended: false }));
+app.use(express.json()); // <-- Ensure this is before routes
+
 app.use(cors({
   origin: "http://localhost:5173", // Allow frontend origin
   methods: "GET,POST,PUT,DELETE",  // Allowed HTTP methods
@@ -34,5 +34,5 @@ app.use('/api', userRoutes);
 // app.use('/api', idleReportRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server started on port ${PORT}`);
 });
