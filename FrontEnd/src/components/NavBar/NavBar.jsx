@@ -33,9 +33,11 @@ function NavBar() {
         {/* Menu Links (aligned to right) */}
         <div className={`ml-auto flex items-center gap-6 ${menuBtn ? "block" : "hidden"} md:flex`}>
           <MenuLink url="/dashboard" name="Dashboard" />
+          <MenuLink url="/dashboard" name="Manage" />
 
+         
          {/* Manage dropdown */}
-         <div
+         {/*<div
   className="relative"
   ref={dropdownRef}
   onMouseLeave={() => setDropMenuOpen(false)}
@@ -70,7 +72,7 @@ function NavBar() {
       </NavLink>
     </div>
   )}
-</div>
+</div> */}
 
 
 
